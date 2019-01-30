@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Kubernetes in 60 minutes</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <style type="text/css">
+        mark {
+            background-color: #a23;
+            color: white;
+        }
+    </style>
+
+    <!-- Printing and PDF exports -->
+    <script>
+        let isPDFPrint = window.location.search.match(/print-pdf/gi);
+        let theme = document.createElement('link');
+        theme.rel = 'stylesheet';
+        theme.type = 'text/css';
+        theme.href = 'css/theme/league.css';
+        document.getElementsByTagName('head')[0].appendChild(theme);
+
+        let print = document.createElement('link');
+        print.rel = 'stylesheet';
+        print.type = 'text/css';
+        print.href = isPDFPrint ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(print);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>Kubernetes in 60 minutes</h2>
+            <img src="img/kubernetes.png" class="plain" style="background: transparent; width: 15rem">
+            <h6>Adam Netočný<br>Michal Zerola</h6>
+        </section>
+
+        <section>
+            <section>
+                <h3>What is Kubernetes?</h3>
+                <ul>
+                    <li>Industry leading orchestration platform</li>
+                    <li>From Greek
+                        <ul>
+                            <li>Means helmsman / ship‘s pilot</li>
+                            <li>Steers your ship full of containers</li>
+                        </ul>
+                    </li>
+                    <li>Builds upon 15 years of experience at Google</li>
+                    <li>Open source (ASL 2.0), governed by CNCF</li>
+                </ul>
+                <img src="img/repo_stats.png" class="plain" style="background: transparent;">
+            </section>
+            <section>
+                <img src="img/clouds.v2.svg" class="plain" style="background: transparent;">
+            </section>
+            <section>
+                <h3>Containers</h3>
+                <ul>
+                    <li>Lightweight, stand-alone, executable package of a piece of software, e.g. web server or micro-service</li>
+                    <li>Includes everything needed to run it: code, runtime, system tools, system libraries, settings,
+                        etc.
+                    </li>
+                    <li>Software will always run the same, regardless of the environment</li>
+                    <li>Isolate software from its surroundings</li>
+                    <li>Similar isolation to VMs, but more light-weight</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <section>
+            <h3>Main features</h3>
+            <img src="img/clouds.v3.svg" class="plain" style="width: 13em; background: transparent;">
+            <blockquote>
+                "Changes the way developers think..."
+            </blockquote>
+            </section>
+            <section>
+                <h3>Cost benefits</h3>
+                <img src="img/capacity.svg" class="plain" style="width: 13em; background: transparent;">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>Architecture</h3>
+                <img src="img/architecture-1.svg" class="plain"
+                     style="float: right; width: 10em; margin-top: 4em; background: transparent;">
+                <img src="img/clouds.v4.svg" class="plain" style="width: 14em; background: transparent;">
+            </section>
+            <section>
+                <h3>Architecture</h3>
+                <img src="img/architecture-2.1.svg" class="plain" style="background: transparent;">
+            </section>
+            <section>
+                <h3>Interacting with Kubernetes</h3>
+                <img src="img/tools.svg" class="plain" style="background: transparent;">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>Deployments</h3>
+                <pre style="font-size: 0.35em; float: right; width: auto"><code class="yaml" data-trim data-noescape>
+                    apiVersion: apps/v1
+                    kind: Deployment
+                    metadata:
+                      name: api-deployment
+                      labels:
+                        app: marginestimator
+                    spec:
+                      replicas: 2
+                      selector:
+                        matchLabels:
+                          app: marginestimator
+                      template:
+                        metadata:
+                          labels:
+                            app: marginestimator
+                        spec:
+                          containers:
+                          - name: marginestimator-api
+                            image: dbg/me-api:1.7.9
+                            ports:
+                          - name: auth-proxy
+                            image: oauth2-proxy:2.2.1
+                            ports:
+                            - containerPort: 443
+                </code></pre>
+                <img src="img/deployment.svg" class="plain" style="background: transparent; width: 50%">
+            </section>
+            <section>
+                <h3>Services</h3>
+                Service load-balances Pods in a Deployment
+                <ul>
+                    <li>Maps Pod ports to a service ports</li>
+                    <li style="white-space: nowrap;">Provide stable IP address or DNS name</li>
+                </ul>
+                <img src="img/Service.svg" class="plain" style="width: 12em; background: transparent;">
+            </section>
+            <section>
+                <h3>Auto scaling</h3>
+                <small>Add a new pod if deployment CPU utilization is more then 50%.</small>
+                <br>
+                <pre style="font-size: 0.49em; float: right; width: auto"><code class="yaml" data-trim data-noescape>
+                    apiVersion: autoscaling/v2beta1
+                    kind: HorizontalPodAutoscaler
+                    metadata:
+                      name: nginx
+                      namespace: default
+                    spec:
+                      scaleTargetRef:
+                        apiVersion: apps/v1
+                        kind: Deployment
+                        name: nginx
+                      minReplicas: 1
+                      maxReplicas: 10
+                      metrics:
+                      - type: Resource
+                        resource:
+                          name: cpu
+                          targetAverageUtilization: 50
+                </code></pre>
+                <img src="img/hpa.svg" class="plain" style="width: 45%; background: transparent">
+            </section>
+        </section>
+
+        <section>
+            <section>
+            <h3>Real example - Margin Estimator</h3>
+            <ul>
+                <li>Calculates margins for any portfolio</li>
+                <li>Cloud-native application</li>
+                <li>Microservice architecture</li>
+                <li>Reactive Java / Go / Angular 5</li>
+            </ul>
+            <img src="img/Margin%20Estimator%20Architecture%20Internal.svg" class="plain"
+                 style="background: transparent">
+            </section>
+            <section>
+                <h3>Easiest way to install Kubernetes</h3>
+                <a target="_blank" href="https://github.deutsche-boerse.de/RiskIT/aws-kubernetes"
+                   style="font-size: 0.8em; white-space: nowrap">https://github.deutsche-boerse.de/RiskIT/aws-kubernetes</a>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+
+    Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // Push each slide change to the browser history
+        history: !isPDFPrint,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
