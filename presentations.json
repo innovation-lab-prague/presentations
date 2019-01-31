@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Introduction to cryptocurrency",
+        "source_dir": "2018-03-28_Introduction-to-cryptocurrency/slides",
+        "destination_dir": "introduction-to-cryptocurrency"
+    },
+    {
+        "name": "Kubernetes in 60 minutes",
+        "source_dir": "2018-04-11_Kubernetes-in-60-minutes/slides",
+        "destination_dir": "kubernetes-in-60-minutes"
+    },
+    {
+        "name": "Innovation lab presentation",
+        "source_dir": "2018-04-23_Innovation-lab-presentation/slides-build",
+        "destination_dir": "innovation-lab-presentation"
+    },
+    {
+        "name": "3D printing at home",
+        "source_dir": "2018-04-25_3d-printing-at-home/slides-build",
+        "destination_dir": "3d-printing-at-home"
+    },
+    {
+        "name": "Energy way to agile",
+        "source_dir": "2018-12-13_Energy-way-to-agile/slides-build",
+        "destination_dir": "energy-way-to-agile"
+    }
+]
