@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Innovation_Lab_Template</title>
+        <link rel="stylesheet" href="./css/reveal.css">
+        <link rel="stylesheet" href="./css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="./css/highlight/zenburn.css">
+        <link rel="stylesheet" href="./css/print/paper.css" type="text/css" media="print">
+
+
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template">
+<!-- .slide: data-background="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/lab-intro-2.jpg" -->
+
+### Innovation Lab
+<img src="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/logo-white.png" style="background:none; border:none; box-shadow:none; width: 100px">
+</script></section><section  data-markdown><script type="text/template"><!-- .slide: data-background="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/open-space-office-oldschool.jpg" -->
+<!-- ### Open Space   -->
+</script></section><section  data-markdown><script type="text/template"><!-- .slide: data-background="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/lab-find-us.jpg" -->
+
+## Let's take a walk
+
+* Futurama Park - Building F 
+* 2nd Floor, right wing
+</script></section><section  data-markdown><script type="text/template"><!-- .slide: data-background="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/lab-phonebooths.jpg" -->
+### New space
+
+* Opened in February
+* Flexible areas
+* Meeting rooms
+
+</script></section><section  data-markdown><script type="text/template"><!-- .slide: data-background="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/lab-bull.jpg" -->
+### Brainstorming area
+
+* Flexibile seats
+* Innovator's Library
+* Google Home
+</script></section><section  data-markdown><script type="text/template"><!-- .slide: data-background="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/lab-round-table.jpg" -->
+### Coworking & Meeting area
+
+* 8+ seats
+* 60'' smart screen
+* Amazon Alexa
+</script></section><section  data-markdown><script type="text/template"><!-- .slide: data-background="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/lab-long-table-2.jpg" -->
+
+### Workshop area
+
+* 12+ seats
+* 80'' smart screen
+* 4x 24'' monitors
+</script></section><section  data-markdown><script type="text/template"><!-- .slide: data-background="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/lab-relax.jpg" -->
+### Relaxation lounge
+
+* Playstation 4
+* Table Soccer
+* Library (*)
+</script></section><section  data-markdown><script type="text/template"><!-- .slide: data-background="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/lab-intro-bear.jpg" -->
+### Purpose
+
+* Promote PDL Ideas
+* Unleash creativity
+* Co-working
+</script></section><section  data-markdown><script type="text/template"><!-- .slide: data-background="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/lab-talk-audience.jpg" -->
+## Innovation Talks
+
+* Inspired by new space
+* Created videos on various topics
+* Made in one week
+</script></section><section  data-markdown><script type="text/template"><!-- .slide: data-background="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/lab-talk-audience.jpg" -->
+## Innovation Talks
+
+* Bi-weekly
+* Recorded & available
+* Various topics:
+    * Cryptocurrencies
+    * Devops tools
+    * 3D Printing (*)
+    * A.I./Machine Learning (*)
+</script></section><section  data-markdown><script type="text/template">
+<!-- .slide: data-background="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/lab-future.jpg" -->
+
+## What's next?
+
+* Bleeding edge tech-talks
+* External speakers
+* Video tutorials
+* Experiments
+</script></section><section  data-markdown><script type="text/template"><!-- .slide: data-background="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/lab-long-table-meet.jpg" -->
+## We need you!
+
+* Looking for speakers
+* Expanding our crew
+* Feedback
+</script></section><section  data-markdown><script type="text/template">
+
+<!-- .slide: data-background="https://s3.eu-central-1.amazonaws.com/innovation-lab-storage/images/lab-intro.jpg" -->
+## See you soon!
+
+* Stanislav Siska
+* Slack: #innovation_lab
+* https://innovation-lab.cz</script></section></div>
+        </div>
+
+        <script src="./lib/js/head.min.js"></script>
+        <script src="./js/reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: './lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: './plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: './plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: './plugin/zoom-js/zoom.js', async: true },
+              { src: './plugin/notes/notes.js', async: true },
+              { src: './plugin/math/math.js', async: true }
+            ];
+
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default', // none/fade/slide/convex/concave/zoom
+              dependencies: deps
+            };
+
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+
+            var options = {"transition":"fade-in"};
+            options = extend(defaultOptions, options, queryOptions);
+        </script>
+
+
+        <script>
+            Reveal.initialize(options);
+        </script>
+    </body>
+</html>
