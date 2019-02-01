@@ -43,11 +43,6 @@ jobs:
           command: ./build.py presentations.json
 
       - run:
-          name: debug
-          command: |
-            pwd
-            find /home -name "index.html"
-
-      - run:
           name: Sync to S3 bucket
           command: aws s3 sync _site/ s3://innovation-lab.cz/presentations/ --delete --region eu-central-1
+
